@@ -1,6 +1,14 @@
 pipeline {
     agent none
     stages {
+
+        stage('getEnvInfo'){
+          steps {
+              sh “whoami”
+            }
+        }
+
+
         stage('Build') {
             agent {
                 docker {
@@ -8,7 +16,7 @@ pipeline {
                 }
             }
             steps {
-                sh “whoami” 
+                sh “whoami”
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
             }
         }
