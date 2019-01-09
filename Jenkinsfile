@@ -2,12 +2,13 @@ pipeline {
     agent any
     stages {
 
-        stage('getEnvInfo'){
-          steps {
-            wrap([$class: 'BuildUser']) {
-            sh 'echo "${BUILD_USER}"'
-          }
-        }
+          stage('getEnvInfo'){
+              steps {
+                wrap([$class: 'BuildUser']) {
+                sh 'echo "${BUILD_USER}"'
+              }
+            }
+            }
 
 
         stage('Build') {
