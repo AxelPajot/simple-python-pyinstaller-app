@@ -1,11 +1,12 @@
 pipeline {
-    agent none
+    agent any
     stages {
 
         stage('getEnvInfo'){
           steps {
-              sh “whoami”
-            }
+            wrap([$class: 'BuildUser']) {
+            sh 'echo "${BUILD_USER}"'
+          }
         }
 
 
